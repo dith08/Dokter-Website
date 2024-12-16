@@ -64,7 +64,7 @@ const Doctors = () => {
                   </div>
                   <p className="text-gray-900 font-extrabold text-xl mb-2">{item.name}</p>
                   <p className="text-gray-600 text-md mb-4">{item.speciality}</p>
-                  <button className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-xl font-bold text-center hover:opacity-90 transition-all">Book Appointment</button>
+                  <button className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-xl font-bold text-center hover:opacity-90 transition-all">Buat Janji Temu</button>
                 </div>
               </div>
             ))}
