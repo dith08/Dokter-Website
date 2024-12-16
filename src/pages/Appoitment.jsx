@@ -7,7 +7,7 @@ import RelatedDoctors from "../components/RelatedDoctors";
 const Appoinment = () => {
   const { docId } = useParams();
   const { doctors, currencySymbol } = useContext(AppContext);
-  const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  const daysOfWeek = ["MIN", "SEN", "SEL", "RAB", "KAM", "JUM", "SAB"];
 
   const [docInfo, setDocInfo] = useState(null);
   const [docSlots, setDocSlots] = useState([]);
@@ -28,9 +28,11 @@ const Appoinment = () => {
       let currentDate = new Date(today); // Copy data tanggal sekarang ke variabel baru
       currentDate.setDate(today.getDate() + i); // ⛔️ **SET**: atur tanggal `currentDate` jadi 1 hari ke depan
   
-      if (!displayedDays.has(currentDate.getDay())) { 
-        // ✅ **GET**: Ngambil "hari ke berapa" dari currentDate (Misal: 0=Sunday, 1=Monday)
-        let dailySlots = []; // Array kosong buat slot waktu dalam 1 hari
+
+
+
+      if (!displayedDays.has(currentDate.getDay())) {
+        let dailySlots = [];
   
         for (let hour = 9; hour <= 21; hour++) { // Loop dari jam 9 pagi sampai jam 21 malam
           for (let minute = 0; minute < 60; minute += 30) { 
@@ -64,7 +66,7 @@ const Appoinment = () => {
     setDocSlots(slots); // ⛔️ **SET**: Masukkan semua data slot ke variabel atau state
     console.log(slots); // ✅ **GET**: Ngambil data slot dan tampilkan di console
   };
-  
+
 
   useEffect(() => {
     fetchDocInfo();
@@ -104,14 +106,14 @@ const Appoinment = () => {
 
             <div>
               <p className="flex items-center gap-1 text-sm text-gray-600 mt-3 font-medium">
-                About <img src={assets.info_icon} alt="" />
+                Tentang <img src={assets.info_icon} alt="" />
               </p>
               <p className="text-sm text-gray-600 mt-2 max-w-[700px]">
                 {docInfo.about}
               </p>
             </div>
             <p className="text-gray-600 font-medium mt-4">
-              Appointment fee:{" "}
+              Biaya Konsultasi:{" "}
               <span className="font-semibold text-gray-800">
                 {currencySymbol}
                 {docInfo.fees}
@@ -121,7 +123,7 @@ const Appoinment = () => {
         </div>
 
         <div className="sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700">
-          <p>Booking Slots</p>
+          <p>Jadwal Tersedia</p>
           <div className="flex gap-3 items-center w-full overflow-x-scroll">
             {docSlots.map((item, index) => (
               <div
@@ -157,7 +159,7 @@ const Appoinment = () => {
           <button className="bg-blue-500 text-white px-12 py-3 rounded-full mt-10 hover:scale-105 transition-all duration-300">Buat Janji Temu</button>
         </div>
 
-        {/* listing related doctors */}
+        {/* daftar dokter terkait */}
         <RelatedDoctors docId={docId} speciality={docInfo.speciality} />
 
       </div>
