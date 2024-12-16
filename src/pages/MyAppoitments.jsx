@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { useContext } from "react";
 
-const JadwalSaya = () => {
+const MyAppointments = () => {
   const navigate = useNavigate();
   const {doctors} = useContext(AppContext);
 
@@ -40,4 +40,4 @@ const JadwalSaya = () => {
   )
 }
 
-export default JadwalSaya
+export default MyAppointments

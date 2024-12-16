@@ -3,6 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
 import RelatedDoctors from "../components/RelatedDoctors";
+import Notification from "../components/Notification";  // Import Notification
+import { ToastContainer, toast } from "react-toastify";  // ⬅️ Import react-toastify
+import "react-toastify/dist/ReactToastify.css"; // ⬅️ Import CSS Toastify
 
 const Appoinment = () => {
   const { docId } = useParams();
@@ -13,6 +16,7 @@ const Appoinment = () => {
   const [docSlots, setDocSlots] = useState([]);
   const [slotIndex, setSlotIndex] = useState(0);
   const [slotTime, setSlotTime] = useState("");
+  const [notification, setNotification] = useState(""); // State untuk menampung pesan notifikasi
 
   const fetchDocInfo = async () => {
     const docInfo = doctors.find((doc) => doc._id === docId);
@@ -20,53 +24,44 @@ const Appoinment = () => {
   };
 
   const getAvaibleSlots = async () => {
-    let today = new Date(); // Buat object `today` (ini adalah tanggal sekarang)
-    let slots = []; // Array kosong buat nyimpen semua slot waktu
-    let displayedDays = new Set(); // Set buat nyimpen hari yg udah ditampilkan
-  
-    for (let i = 0; i < 7; i++) { // Loop 7 kali buat 7 hari ke depan
-      let currentDate = new Date(today); // Copy data tanggal sekarang ke variabel baru
-      currentDate.setDate(today.getDate() + i); // ⛔️ **SET**: atur tanggal `currentDate` jadi 1 hari ke depan
-  
+    let today = new Date();
+    let slots = [];
+    let displayedDays = new Set();
 
-
+    for (let i = 0; i < 7; i++) {
+      let currentDate = new Date(today);
+      currentDate.setDate(today.getDate() + i);
 
       if (!displayedDays.has(currentDate.getDay())) {
         let dailySlots = [];
-  
-        for (let hour = 9; hour <= 21; hour++) { // Loop dari jam 9 pagi sampai jam 21 malam
-          for (let minute = 0; minute < 60; minute += 30) { 
-            let slotDateTime = new Date(currentDate); // Copy currentDate ke slotDateTime
-            slotDateTime.setHours(hour); // ⛔️ **SET**: Ubah jam slot ke 09:00, 09:30, dst
-            slotDateTime.setMinutes(minute); // ⛔️ **SET**: Ubah menit slot ke 00 atau 30 (misal 09:00, 09:30)
-  
+        for (let hour = 9; hour <= 21; hour++) {
+          for (let minute = 0; minute < 60; minute += 30) {
+            let slotDateTime = new Date(currentDate);
+            slotDateTime.setHours(hour);
+            slotDateTime.setMinutes(minute);
             let formattedTime = slotDateTime.toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
-            }); 
-            // ✅ **GET**: Ngambil data waktu dari slotDateTime dalam format '09:00', '09:30', dst
-  
+            });
             dailySlots.push({
-              dateTime: new Date(slotDateTime), // Copy waktu slot ini
-              time: formattedTime, // Masukkan waktu ke variabel 'time'
+              dateTime: new Date(slotDateTime),
+              time: formattedTime,
             });
           }
         }
-  
+
         slots.push({
-          day: currentDate.getDay(), // ✅ **GET**: Ngambil "hari ke berapa" dari currentDate (contoh: 1 = Senin)
-          date: currentDate.getDate(), // ✅ **GET**: Ngambil tanggal dari currentDate (contoh: tanggal 9)
-          dailySlots: dailySlots, // Tambahin slot waktu dari jam 09:00 - 21:30
+          day: currentDate.getDay(),
+          date: currentDate.getDate(),
+          dailySlots: dailySlots,
         });
-  
-        displayedDays.add(currentDate.getDay()); // ⛔️ **SET**: Tandai bahwa hari ini udah ditambahkan
+
+        displayedDays.add(currentDate.getDay());
       }
     }
-  
-    setDocSlots(slots); // ⛔️ **SET**: Masukkan semua data slot ke variabel atau state
-    console.log(slots); // ✅ **GET**: Ngambil data slot dan tampilkan di console
-  };
 
+    setDocSlots(slots);
+  };
 
   useEffect(() => {
     fetchDocInfo();
@@ -78,9 +73,26 @@ const Appoinment = () => {
     }
   }, [docInfo]);
 
+  const handleAppointment = () => {
+    if (!slotTime) {
+      toast.error("Pilih Jam Terlebih Dahulu!"); // Jika waktu belum dipilih
+      return;
+    }
+
+    // Setel notifikasi sukses saat janji temu dibuat
+    setNotification(`Janji temu dengan ${docInfo.name} berhasil dibuat pada pukul ${slotTime}.`);
+    setSlotTime(""); // Reset slotTime setelah membuat janji temu
+  };
+
   return (
     docInfo && (
       <div>
+        {/* Komponen ToastContainer */}
+        <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} closeButton={true} />
+
+        {/* Komponen Notification untuk menampilkan pesan */}
+        {notification && <Notification message={notification} onClose={() => setNotification("")} />}
+
         <div className="flex flex-col sm:flex-row gap-4">
           <div>
             <img
@@ -89,7 +101,6 @@ const Appoinment = () => {
               alt=""
             />
           </div>
-
           <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
             <p className="flex items-center gap-2 text-2xl font-semibold text-gray-800">
               {docInfo.name}
@@ -129,11 +140,7 @@ const Appoinment = () => {
               <div
                 onClick={() => setSlotIndex(index)}
                 key={index}
-                className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${
-                  slotIndex === index
-                    ? "bg-blue-500 text-white"
-                    : "border border-gray-200"
-                }`}
+                className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? "bg-blue-500 text-white" : "border border-gray-200"}`}
               >
                 <p>{daysOfWeek[item.day]}</p>
                 <p>{item.date}</p>
@@ -146,22 +153,22 @@ const Appoinment = () => {
               <p
                 onClick={() => setSlotTime(slot.time)}
                 key={index}
-                className={`text-sm font-light cursor-pointer rounded-full px-4 py-2 flex-shrink-0 ${
-                  slot.time === slotTime
-                    ? "bg-blue-500 text-white"
-                    : "text-gray-600 border border-gray-300"
-                }`}
+                className={`text-sm font-light cursor-pointer rounded-full px-4 py-2 flex-shrink-0 ${slot.time === slotTime ? "bg-blue-500 text-white" : "text-gray-600 border border-gray-300"}`}
               >
-                {slot.time.toLowerCase()}
+                {slot.time}
               </p>
             ))}
           </div>
-          <button className="bg-blue-500 text-white px-12 py-3 rounded-full mt-10 hover:scale-105 transition-all duration-300">Buat Janji Temu</button>
+
+          <button 
+            onClick={handleAppointment} 
+            className="bg-blue-500 text-white px-12 py-3 rounded-full mt-10"
+          >
+            Buat Janji Temu
+          </button>
         </div>
 
-        {/* daftar dokter terkait */}
         <RelatedDoctors docId={docId} speciality={docInfo.speciality} />
-
       </div>
     )
   );
