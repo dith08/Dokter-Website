@@ -4,7 +4,7 @@ import { createContext } from "react"
 export const AppContext = createContext()
 
 const AppContextProvider = (props) => {
-    const currencySymbol = '$'
+    const currencySymbol = 'RP.'
     console.log('Data doctors dari assets:', doctors); // Debug data
     const value = {
         doctors, 

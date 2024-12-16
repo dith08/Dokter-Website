@@ -96,7 +96,7 @@ export const doctors = [
         degree: 'S.Ked., dr.',
         experience: '5 Tahun',
         about: 'Dr. Andi Wijaya adalah dokter umum berpengalaman yang fokus pada perawatan kesehatan preventif. Ia telah menangani pasien selama lebih dari 5 tahun dengan perawatan yang dipersonalisasi.',
-        fees: 100000,
+        fees: 100.000,
         address: {
             line1: 'Jalan Merdeka No. 17',
             line2: 'Jakarta Pusat, DKI Jakarta'
@@ -110,7 +110,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.OG',
         experience: '7 Tahun',
         about: 'Dr. Siti Nurhaliza adalah dokter kandungan yang berpengalaman dalam menangani kehamilan dan kesehatan reproduksi wanita. Ia terkenal karena pendekatan ramah pasiennya.',
-        fees: 150000,
+        fees: 150.000,
         address: {
             line1: 'Jalan Sudirman No. 27',
             line2: 'Bandung, Jawa Barat'
@@ -124,7 +124,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.KK',
         experience: '3 Tahun',
         about: 'Dr. Eko Santoso adalah seorang dokter spesialis kulit yang ahli dalam mengatasi masalah kulit seperti jerawat, eksim, dan infeksi kulit lainnya.',
-        fees: 120000,
+        fees: 120.000,
         address: {
             line1: 'Jalan Diponegoro No. 37',
             line2: 'Surabaya, Jawa Timur'
@@ -138,7 +138,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.A',
         experience: '6 Tahun',
         about: 'Dr. Budi Prasetyo adalah dokter spesialis anak yang berdedikasi untuk memastikan kesehatan anak-anak dari bayi hingga remaja.',
-        fees: 140000,
+        fees: 140.000,
         address: {
             line1: 'Jalan Pemuda No. 47',
             line2: 'Semarang, Jawa Tengah'
@@ -152,7 +152,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.N',
         experience: '8 Tahun',
         about: 'Dr. Rina Lestari adalah dokter spesialis saraf yang memiliki pengalaman luas dalam menangani pasien dengan gangguan saraf seperti stroke dan epilepsi.',
-        fees: 180000,
+        fees: 180.000,
         address: {
             line1: 'Jalan Cendana No. 57',
             line2: 'Medan, Sumatera Utara'
@@ -166,7 +166,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.PD-KGEH',
         experience: '10 Tahun',
         about: 'Dr. Sigit Prasetia Kurniawan adalah spesialis Pencernaan yang ahli dalam menangani masalah pencernaan seperti asam lambung dan gangguan usus.',
-        fees: 200000,
+        fees: 200.000,
         address: {
             line1: 'Jalan Mawar No. 67',
             line2: 'Makassar, Sulawesi Selatan'
@@ -180,7 +180,7 @@ export const doctors = [
         degree: 'S.Ked., dr.',
         experience: '4 Tahun',
         about: 'Dr. I Ketut Suardana adalah dokter umum yang terkenal dengan pelayanan ramah dan diagnosa yang akurat.',
-        fees: 110000,
+        fees: 110.000,
         address: {
             line1: 'Jalan Kenanga No. 17',
             line2: 'Yogyakarta, DI Yogyakarta'
@@ -194,7 +194,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.OG',
         experience: '9 Tahun',
         about: 'Dr. Hendra Saputra adalah spesialis kandungan dengan fokus pada kehamilan berisiko tinggi dan kesuburan.',
-        fees: 160000,
+        fees: 160.000,
         address: {
             line1: 'Jalan Anggrek No. 27',
             line2: 'Balikpapan, Kalimantan Timur'
@@ -208,7 +208,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.KK',
         experience: '2 Tahun',
         about: 'Dr. Maria Sulastri adalah dokter kulit yang fokus pada perawatan kecantikan dan pengobatan jerawat.',
-        fees: 125000,
+        fees: 125.000,
         address: {
             line1: 'Jalan Melati No. 37',
             line2: 'Denpasar, Bali'
@@ -222,7 +222,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.N',
         experience: '5 Tahun',
         about: 'Dr. Ahmad Rizki adalah spesialis saraf yang berfokus pada pengobatan gangguan neurologis kompleks dan rehabilitasi pasien.',
-        fees: 170000,
+        fees: 170.000,
         address: {
             line1: 'Jalan Pahlawan No. 12',
             line2: 'Palembang, Sumatera Selatan'
@@ -236,7 +236,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.A',
         experience: '7 Tahun',
         about: 'Dr. Dewi Kartika adalah dokter anak yang ahli dalam penanganan kesehatan anak dengan pendekatan holistik dan penuh kasih.',
-        fees: 135000,
+        fees: 135.000,
         address: {
             line1: 'Jalan Raya Bogor No. 45',
             line2: 'Bogor, Jawa Barat'
@@ -250,7 +250,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.PD-KGEH',
         experience: '6 Tahun',
         about: 'Dr. Gunawan Wiranto adalah spesialis pencernaan yang berpengalaman dalam menangani berbagai penyakit sistem pencernaan.',
-        fees: 190000,
+        fees: 190.000,
         address: {
             line1: 'Jalan Ahmad Yani No. 22',
             line2: 'Surakarta, Jawa Tengah'
@@ -264,7 +264,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.OG',
         experience: '4 Tahun',
         about: 'Dr. Fitri Handayani adalah dokter kandungan muda dengan keahlian dalam konsultasi kesehatan reproduksi dan persalinan.',
-        fees: 145000,
+        fees: 145.000,
         address: {
             line1: 'Jalan Veteran No. 33',
             line2: 'Malang, Jawa Timur'
@@ -278,7 +278,7 @@ export const doctors = [
         degree: 'S.Ked., dr.',
         experience: '3 Tahun',
         about: 'Dr. Ricky Setiawan adalah dokter umum dengan pendekatan modern dan fokus pada pencegahan penyakit.',
-        fees: 95000,
+        fees: 95.000,
         address: {
             line1: 'Jalan Gatot Subroto No. 88',
             line2: 'Tangerang, Banten'
@@ -292,7 +292,7 @@ export const doctors = [
         degree: 'S.Ked., Sp.KK',
         experience: '5 Tahun',
         about: 'Dr. Nina Permata adalah spesialis kulit yang ahli dalam prosedur kecantikan dan pengobatan kondisi kulit kompleks.',
-        fees: 130000,
+        fees: 130.000,
         address: {
             line1: 'Jalan Kebon Jeruk No. 55',
             line2: 'Jakarta Barat, DKI Jakarta'
