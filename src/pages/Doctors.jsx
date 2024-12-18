@@ -23,7 +23,7 @@ const Doctors = () => {
 
   return (
     <div>
-      <p className="ml-3 text-gray-800 text-2xl font-semibold">Explore Our Specialist Doctors</p>
+      <p className="ml-3 text-gray-800 text-2xl font-semibold">Jelajahi Dokter Spesialis Kami</p>
 
       <div className="flex flex-col sm:flex-row items-start gap-5 mt-5">
         <button 
